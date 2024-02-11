@@ -78,5 +78,5 @@ imprimirMatriz(matrix)
 print(soluciones)
 
 
-
+#Comentario de prueba
 #Imprimir matriz para confirmar
