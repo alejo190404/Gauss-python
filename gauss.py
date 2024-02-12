@@ -9,6 +9,12 @@ def imprimirMatriz(matriz):
                 print(matriz[i][j], end="\t")
         print()
 
+#Función para imprimir soluciones con formato
+def imprimirSoluciones(soluciones):
+    print("Soluciones:")
+    for i in range(len(soluciones)):
+        print("x" + str(i + 1) + " = " + str(soluciones[i]))
+
 #Función para transformar una fila de la matriz
 def transformarFila(matriz, Fpivot, Ftransform, factor):
     for i in range(len(matriz) + 1):
@@ -48,7 +54,6 @@ soluciones =[]
 for i in range(n):
     soluciones.append(1)
 
-
 for i in range(n):
     if (matrix[-(i+1)][-(i+2)]==1):
         suma = 0
@@ -58,25 +63,20 @@ for i in range(n):
         soluciones[-(i+1)] = matrix[-(i+1)][-1] - suma
 
     else:
+        divisor = matrix[-(i+1)][-(i+2)]
         for j in range(n+1):
-            matrix[-(i+1)][j] = matrix[-(i+1)][j]/matrix[-(i+1)][-(i+2)]
-            print("Operación ")
-            imprimirMatriz(matrix)
+            matrix[-(i+1)][j] = matrix[-(i+1)][j]/divisor
         suma = 0
         for j in range(n):
             suma += matrix[-(i+1)][j]*soluciones[j]
         suma = suma - 1
-        print("Operación ")
-        print("SUma:  " + str(suma))
-        imprimirMatriz(matrix)
         soluciones[-(i+1)] = matrix[-(i+1)][-1] - suma
-    print("Iteración " + str(i))
-    imprimirMatriz(matrix)
-    print(soluciones)
 
+
+#Imprimir matriz para confirmar
 imprimirMatriz(matrix)
-print(soluciones)
+#Imprimir soluciones con formato
+imprimirSoluciones(soluciones)
 
 
 #Comentario de prueba
-#Imprimir matriz para confirmar
